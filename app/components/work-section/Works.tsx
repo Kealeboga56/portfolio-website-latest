@@ -15,6 +15,7 @@ export default function Works() {
     {
       title: "Automated Penguin Health Monitoring System",
       liveLink: "https://my-eportfolio-9efa8.web.app/pengiun.html",
+      gitLink: "https://github.com/Kealeboga56/",
       about:
         "An innovative conservation technology project developed as part of my EEE4113F Final Year Design at the University of Cape Town. The system was designed to monitor the health of endangered African penguins through a non-invasive, automated weighing platform. It combines load cells, RFID identification, and wireless data transmission to record penguin weight as they naturally walk across the platform with results displayed on a real-time data visualization dashboard.",
       stack: [
@@ -30,6 +31,7 @@ export default function Works() {
     {
       title: "Aerocharge: Wireless Charger for a Palm-sized Microdrone(FYP)",
       liveLink: "#/home",
+      gitLink: "https://github.com/Kealeboga56/",
       about:
         "Developed a wireless power transfer system for the M5Stamp Fly ESP32-S3 microdrone to extend its operational capability beyond the 5-minute flight time limitation of its 300mAh battery. The project involved designing and simulating wireless power transfer coils using ANSYS Maxwell finite element analysis, developing power electronics circuits in MATLAB Simulink, and building a physical prototype to validate the simulation models. This system demonstrates the potential for continuous autonomous drone operation in confined spaces for applications such as warehouse monitoring, 24/7 surveillance, and fire detection in high-risk environments.",
       stack: ["PCB Design", "Embedded System ( C/C++ )", "Power Electronics"],

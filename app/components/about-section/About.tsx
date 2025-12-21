@@ -33,7 +33,7 @@ export default function About() {
       <div className="grid grid-cols-1 lg:grid-cols-[8.5fr_3.5fr] gap-8 mt-6">
         <div className="grid grid-cols-1 antialiased gap-6 text-white/80 text-xl md:text-2xl">
           <AnimatedBody className="leading-[34px] md:leading-[39px]">
-            Hi there, welcome to my website! I'm Kea an Electrical and Computer Engineering graduate student at the University of Cape Town
+            Hi there, welcome to my website! I&apos;m Kea an Electrical and Computer Engineering graduate student at the University of Cape Town
             with a passion for building and problem-solving. My interests span control systems, embedded systems,
              and software development, and I&apos;m driven by the challenge of turning complex ideas into practical, 
              working solutions.
