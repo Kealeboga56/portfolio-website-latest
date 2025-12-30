@@ -54,7 +54,7 @@ export default function About() {
             <Link
               className="underline"
               href={
-                "https://drive.google.com/file/d/1Rd-IB_5pxsGj4RDtHjEggPB392ND29xB/view?usp=sharing"
+                "https://drive.google.com/file/d/14RNE5W94y8-epRmA7_ACjv_iX7k827ty/view?usp=sharing"
               }
             >
               my Curriculum vitae
