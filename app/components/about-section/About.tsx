@@ -7,6 +7,11 @@ import AnimatedBody from "../ui/AnimatedBody";
 import AnimatedTitle from "../ui/AnimatedTitle";
 import ContraButton from "./ContraButton";
 
+
+import Lottie from 'lottie-react';
+import man_fly from '../../lottie/Businessman_flies.json';
+
+
 const syne = Syne({ subsets: ["latin"] });
 
 export default function About() {
@@ -45,6 +50,23 @@ export default function About() {
            I enjoy blending both the hardware and software sides of engineering, whether it&apos;s tuning a control loop, implementing efficient algorithms, 
            or creating intuitive user interfaces.
           </AnimatedBody>
+
+
+
+
+
+
+
+          <AnimatedBody className="leading-[34px] md:leading-[39px]">
+                    <Lottie
+                      animationData={man_fly}
+                      loop={true}
+                      className="w-48 h-48" // adjust size as needed
+                    />
+
+          </AnimatedBody>
+
+          
           <AnimatedBody className="inline leading-[34px] md:leading-[39px]">
             My ultimate goal is to grow into a role where I can design impactful technologies, contribute to innovation, 
             and continuously learn while making a difference in society.
