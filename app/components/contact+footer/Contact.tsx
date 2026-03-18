@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Syne } from "next/font/google";
 import { useView } from "@/contexts/ViewContext";
 
@@ -11,16 +11,19 @@ import AnimatedTitle from "../ui/AnimatedTitle";
 import Link from "next/link";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const syne = Syne({ subsets: ["latin"] });
 
+// 🔧 PUT YOUR FORMSPREE ENDPOINT HERE
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mzbnzknl";
+
 export default function Contact() {
   const { setSectionInView } = useView();
   const [viewCount, setViewCount] = useState<number>(0);
   const [formDisplay, setFormDisplay] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const { ref, inView } = useInView({
     threshold: 0.25,
@@ -40,51 +43,54 @@ export default function Contact() {
   const { formState, register, handleSubmit, reset } = useForm();
   const { errors } = formState;
 
-  // For email.js
-  const formRef = useRef<HTMLFormElement>(null);
-
-  function onSubmit(data: any) {
-    console.log(data);
-
-    emailjs
-      .sendForm(
-        `${process.env.SERVICE_ID}`,
-        `${process.env.TEMPLATE_ID}`,
-        formRef.current as HTMLFormElement,
-        {
-          publicKey: `${process.env.APPLICATION_KEY}`,
-        }
-      )
-      .then(
-        () => {
-          console.log("SUCCESS!");
-          toast.success("Message sent", {
-            position: "bottom-left",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            theme: "dark",
-            className: `custom-toast font-kumbhSans`,
-          });
-          reset();
-          setTimeout(() => setFormDisplay(!formDisplay), 5000);
+  async function onSubmit(data: any) {
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
         },
-        (error) => {
-          console.log("FAILED...", error.text);
-          toast.error("Message not sent, check your network", {
-            position: "bottom-left",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            theme: "dark",
-            className: `custom-toast font-kumbhSans`,
-          });
-        }
-      );
+        body: JSON.stringify({
+          name: data.userName,
+          email: data.userEmail,
+          message: data.userMessage,
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent successfully!", {
+          position: "bottom-left",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "dark",
+          className: `custom-toast font-kumbhSans`,
+        });
+        reset();
+        setTimeout(() => setFormDisplay(false), 5000);
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.log("FAILED...", error);
+      toast.error("Message not sent, check your network", {
+        position: "bottom-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+        className: `custom-toast font-kumbhSans`,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -183,7 +189,6 @@ export default function Contact() {
               </div>
               <div className="flex items-center h-full gap-2 w-full">
                 <form
-                  ref={formRef}
                   onSubmit={handleSubmit(onSubmit)}
                   className={`back w-full flex flex-col gap-3 grow-2 basis-0`}
                 >
@@ -260,9 +265,11 @@ export default function Contact() {
                     )}
                   </div>
                   <button
-                    className={`rounded-md bg-linear-to-r from-[#d9d9d91f] to-[#7373731f] py-3 px-5 ${syne.className} font-bold uppercase mt-4`}
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`rounded-md bg-linear-to-r from-[#d9d9d91f] to-[#7373731f] py-3 px-5 ${syne.className} font-bold uppercase mt-4 disabled:opacity-50 disabled:cursor-not-allowed`}
                   >
-                    Send
+                    {isSubmitting ? "Sending..." : "Send"}
                   </button>
                 </form>
               </div>
