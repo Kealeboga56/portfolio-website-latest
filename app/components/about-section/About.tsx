@@ -7,6 +7,8 @@ import AnimatedBody from "../ui/AnimatedBody";
 import AnimatedTitle from "../ui/AnimatedTitle";
 import ContraButton from "./ContraButton";
 
+'use client';
+
 
 import Lottie from 'lottie-react';
 import man_fly from '../../lottie/Businessman_flies.json';
@@ -51,20 +53,9 @@ export default function About() {
            or creating intuitive user interfaces.
           </AnimatedBody>
 
-
-
-
-
-
-
          
-                    <Lottie
-                      animationData={man_fly}
-                      loop={true}
-                      className="w-48 h-48" // adjust size as needed
-                    />
+          <Lottie animationData={man_fly} loop={true} className="w-48 h-48"/>
 
-          
           
           <AnimatedBody className="inline leading-[34px] md:leading-[39px]">
             My ultimate goal is to grow into a role where I can design impactful technologies, contribute to innovation, 
