@@ -57,15 +57,14 @@ export default function About() {
 
 
 
-          <AnimatedBody className="leading-[34px] md:leading-[39px]">
+         
                     <Lottie
                       animationData={man_fly}
                       loop={true}
                       className="w-48 h-48" // adjust size as needed
                     />
 
-          </AnimatedBody>
-
+          
           
           <AnimatedBody className="inline leading-[34px] md:leading-[39px]">
             My ultimate goal is to grow into a role where I can design impactful technologies, contribute to innovation, 

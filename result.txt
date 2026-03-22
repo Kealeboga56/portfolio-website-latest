@@ -1,0 +1,11 @@
+app/components/work-section/FolioCard.tsx:83:        <p className="text-base text-white/70">{about}</p>
+app/components/work-section/FolioCard.tsx-84-        <div className="flex gap-3 md:gap-4 flex-wrap">
+app/components/contact+footer/Footer.tsx:17:      <p>
+app/components/contact+footer/Footer.tsx:28:        <p className="underline leading-tight">SCROLL TO TOP</p>
+app/components/contact+footer/Footer.tsx:42:        <p className="underline leading-tight">SCROLL TO TOP</p>
+app/components/work-section/Tag.tsx:5:    <p className="uppercase whitespace-nowrap bg-linear-to-r from-[#d9d9d91f] to-[#7373731f] px-2 py-[6px] md:py-[6px] md:px-3 rounded-[4px] font-medium md:font-bold text-base lg:text-lg">
+app/components/work-section/TimelineItem.tsx:59:            <p className="text-base sm:text-lg font-bold my-2 sm:my-3">
+app/components/work-section/TimelineItem.tsx:63:          <p className="text-base sm:text-lg text-white/60 my-3">{duration}</p>
+app/components/hero-section/Hero.tsx:84:            <p className="text-white/60 text-xl smm:text-2xl lg:text-3xl col-span-6">
+app/components/hero-section/Hero.tsx:105:            <p className="text-white/60 inline">I&apos;m </p>
+app/components/hero-section/Hero.tsx:109:            <p>an Electrical & Computer Engineer graduate from UCT</p>
