@@ -7,7 +7,6 @@ import AnimatedBody from "../ui/AnimatedBody";
 import AnimatedTitle from "../ui/AnimatedTitle";
 import ContraButton from "./ContraButton";
 
-'use client';
 
 
 import Lottie from 'lottie-react';
